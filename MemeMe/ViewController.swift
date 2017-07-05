@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
     
+    let memeTextDelegate = MemeTextFieldDelegate()
+
     let memeTextAttributes:[String:Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
@@ -31,6 +33,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         memeBottomTextView.defaultTextAttributes = memeTextAttributes
         memeTopTextView.textAlignment = NSTextAlignment.center
         memeBottomTextView.textAlignment = NSTextAlignment.center
+        memeBottomTextView.delegate = memeTextDelegate
+        memeTopTextView.delegate = memeTextDelegate
 
     }
     override func viewWillAppear(_ animated: Bool) {
