@@ -10,16 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var imagePickerView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func pickAnImage(_ sender: Any) {
+        print("pick an image pressed")
+        let pickerController = UIImagePickerController()
+        self.present(pickerController, animated: true, completion: nil)
     }
-
 
 }
 
