@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Use camera to capture image</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Pick an Image to Meme</string>
 	<key>UILaunchStoryboardName</key>
