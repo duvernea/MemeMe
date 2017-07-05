@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate {
 
     @IBOutlet var imagePickerView: UIImageView!
     
@@ -20,7 +21,23 @@ class ViewController: UIViewController {
     @IBAction func pickAnImage(_ sender: Any) {
         print("pick an image pressed")
         let pickerController = UIImagePickerController()
+        pickerController.delegate = self
         self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("imagePicker didFinishPicking")
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.image = image
+        }
+        dismiss(animated: true, completion: nil)
+
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("imagePicker didCancel")
+        // dismiss the modally displayed viewcontroller
+        dismiss(animated: true, completion: nil)
     }
 
 }
