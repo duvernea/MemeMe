@@ -23,6 +23,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet var memeBottomTextView: UITextField!
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
+    @IBOutlet var shareButton: UIBarButtonItem!
+    
+    @IBAction func shareButtonPressed() {
+        print ("share button pressed")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         memeBottomTextView.textAlignment = NSTextAlignment.center
         memeBottomTextView.delegate = memeTextDelegate
         memeTopTextView.delegate = memeTextDelegate
+        
+        // TEST
+        generateMemedImage()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,6 +51,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    func generateMemedImage() -> UIImage {
+//        print ("generate memed image")
+//        var memeView : UIView? = nil
+//        for subview in self.view.subviews {
+//            //print("subview: ", subview.tag)
+//            if (subview.tag == 10) {
+//                print("meme frame", subview.frame.size)
+//                memeView = subview
+//                break
+//            }
+//        }
+//        if let meme = memeView {
+//            UIGraphicsBeginImageContext(meme.frame.size)
+//            view.drawHierarchy(in: meme.frame, afterScreenUpdates: true)
+//        }
+//        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        return memedImage
+        return UIImage()
+    }
+    
+    
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         print("pick an image from album")
         let imagePicker = UIImagePickerController()
