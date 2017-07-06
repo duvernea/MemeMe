@@ -15,6 +15,7 @@
 		C5A121AC1F0C6925006F15C3 /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A121AB1F0C6925006F15C3 /* MemeMeTests.swift */; };
 		C5A121B71F0C6925006F15C3 /* MemeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A121B61F0C6925006F15C3 /* MemeMeUITests.swift */; };
 		C5A121C51F0C8061006F15C3 /* MemeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A121C41F0C8061006F15C3 /* MemeTextFieldDelegate.swift */; };
+		C5A121C71F0DC2DD006F15C3 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A121C61F0DC2DD006F15C3 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C5A121B61F0C6925006F15C3 /* MemeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeUITests.swift; sourceTree = "<group>"; };
 		C5A121B81F0C6925006F15C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5A121C41F0C8061006F15C3 /* MemeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextFieldDelegate.swift; sourceTree = "<group>"; };
+		C5A121C61F0DC2DD006F15C3 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				C5A121961F0C6924006F15C3 /* AppDelegate.swift */,
 				C5A121981F0C6924006F15C3 /* ViewController.swift */,
+				C5A121C61F0DC2DD006F15C3 /* Meme.swift */,
 				C5A1219A1F0C6924006F15C3 /* Main.storyboard */,
 				C5A121C41F0C8061006F15C3 /* MemeTextFieldDelegate.swift */,
 				C5A1219D1F0C6924006F15C3 /* Assets.xcassets */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5A121991F0C6924006F15C3 /* ViewController.swift in Sources */,
+				C5A121C71F0DC2DD006F15C3 /* Meme.swift in Sources */,
 				C5A121C51F0C8061006F15C3 /* MemeTextFieldDelegate.swift in Sources */,
 				C5A121971F0C6924006F15C3 /* AppDelegate.swift in Sources */,
 			);
