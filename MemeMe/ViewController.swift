@@ -53,23 +53,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func generateMemedImage() -> UIImage {
-//        print ("generate memed image")
-//        var memeView : UIView? = nil
-//        for subview in self.view.subviews {
-//            //print("subview: ", subview.tag)
-//            if (subview.tag == 10) {
-//                print("meme frame", subview.frame.size)
-//                memeView = subview
-//                break
-//            }
-//        }
-//        if let meme = memeView {
-//            UIGraphicsBeginImageContext(meme.frame.size)
-//            view.drawHierarchy(in: meme.frame, afterScreenUpdates: true)
-//        }
-//        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//        return memedImage
+        print ("generate memed image")
+        var memeView : UIView? = nil
+        for subview in self.view.subviews {
+            //print("subview: ", subview.tag)
+            if (subview.tag == 10) {
+                print("meme frame", subview.frame.size)
+                memeView = subview
+                break
+            }
+        }
+        if let meme = memeView {
+            UIGraphicsBeginImageContext(meme.bounds.size)
+            meme.layer.render(in: UIGraphicsGetCurrentContext()!)
+            let img : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+
+            //view.drawHierarchy(in: meme.frame, afterScreenUpdates: true)
+            UIGraphicsEndImageContext()
+            return img
+        
+    }
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return memedImage
         return UIImage()
     }
     
