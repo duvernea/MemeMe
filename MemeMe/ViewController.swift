@@ -25,8 +25,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var shareButton: UIBarButtonItem!
     
+    var memedImage: UIImage!
+
+    
     @IBAction func shareButtonPressed() {
         print ("share button pressed")
+        memedImage = generateMemedImage()
+        
+        let controller = UIActivityViewController(activityItems: [memedImage, "My Meme"], applicationActivities: nil)
+        
+        
+        self.present(controller, animated: true, completion: nil)
+        
+        controller.completionWithItemsHandler = {
+            (activityType, completed, items, error) in
+            
+            guard completed else { print("User cancelled."); return }
+            
+            // save the meme
+            self.save()
+            
+            print("Completed With Activity Type: \(activityType)")
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -39,10 +60,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         memeBottomTextView.delegate = memeTextDelegate
         memeTopTextView.delegate = memeTextDelegate
         
-        setShareButton() 
+        setShareButton()
         
-        // TEST
-        generateMemedImage()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,7 +97,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return memedImage
-        return UIImage()
     }
     
     
@@ -121,6 +139,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         } else {
             shareButton.isEnabled = true
         }
+    }
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: memeTopTextView.text!, bottomText: memeBottomTextView.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
     }
     func keyboardWillShow(_ notification:Notification) {
         if (memeBottomTextView.isFirstResponder) {
