@@ -39,6 +39,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         memeBottomTextView.delegate = memeTextDelegate
         memeTopTextView.delegate = memeTextDelegate
         
+        setShareButton() 
+        
         // TEST
         generateMemedImage()
     }
@@ -103,6 +105,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
         }
+        setShareButton()
         dismiss(animated: true, completion: nil)
 
     }
@@ -111,6 +114,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         print("imagePicker didCancel")
         // dismiss the modally displayed viewcontroller
         dismiss(animated: true, completion: nil)
+    }
+    func setShareButton() {
+        if (imagePickerView.image == nil) {
+            shareButton.isEnabled = false
+        } else {
+            shareButton.isEnabled = true
+        }
     }
     func keyboardWillShow(_ notification:Notification) {
         if (memeBottomTextView.isFirstResponder) {
