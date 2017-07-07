@@ -24,6 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var shareButton: UIBarButtonItem!
+    @IBOutlet var memeView: UIView!
+
     
     var memedImage: UIImage!
 
@@ -61,6 +63,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         memeTopTextView.delegate = memeTextDelegate
         
         setShareButton()
+        self.imagePickerView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleRightMargin, .flexibleBottomMargin]
+        self.memeView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleRightMargin, .flexibleBottomMargin]
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -114,6 +119,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         let imageCamera = UIImagePickerController()
         imageCamera.delegate = self
         imageCamera.sourceType = .camera
+        setShareButton()
+        resizeImageView()
         present(imageCamera, animated: true, completion: nil)
     }
     
@@ -124,6 +131,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             imagePickerView.image = image
         }
         setShareButton()
+        resizeImageView()
         dismiss(animated: true, completion: nil)
 
     }
@@ -169,6 +177,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    func resizeImageView() {
+        var widthRatio = imagePickerView.bounds.size.width / (imagePickerView.image?.size.width)!
+        var heightRatio = imagePickerView.bounds.size.height / (imagePickerView.image?.size.height)!
+        var scale =  widthRatio < heightRatio ? widthRatio : heightRatio
+        var imageWidth = scale * (imagePickerView.image?.size.width)!
+        var imageHeight = scale * (imagePickerView.image?.size.height)!
+        
+        memeView.frame = CGRect(x:0, y:0, width:imageWidth, height:imageHeight);
+        memeView.center = (memeView.superview?.center)!;
+        // imagePickerView.frame = CGRect(x:0, y:0, width:imageWidth, height:imageHeight);
+        // imagePickerView.center = (imagePickerView.superview?.center)!;
+        view.layoutIfNeeded()
+        /// memeTopTextView.layoutIfNeeded()
+        // memeBottomTextView.layoutIfNeeded()
+        
+    
     }
 
 }
