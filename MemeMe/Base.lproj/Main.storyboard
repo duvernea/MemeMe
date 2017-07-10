@@ -174,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="993" y="-1361"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="XUA-ll-s22">
             <objects>
-                <tableViewController id="Ecv-Lf-MDc" sceneMemberID="viewController">
+                <tableViewController id="Ecv-Lf-MDc" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PZv-1e-T66">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,7 +197,13 @@
                             <outlet property="delegate" destination="Ecv-Lf-MDc" id="xPZ-kC-j9i"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="sTb-Vv-Nqp"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="sTb-Vv-Nqp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MiK-jK-4sA">
+                            <connections>
+                                <action selector="createMemeButton:" destination="Ecv-Lf-MDc" id="Eko-zC-jak"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cd-tB-HwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -217,6 +223,8 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rY-SO-w8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Item" id="iAl-69-BDP"/>
+                <navigationItem title="Title" id="eIO-sC-ZWQ"/>
             </objects>
             <point key="canvasLocation" x="22" y="-670"/>
         </scene>
