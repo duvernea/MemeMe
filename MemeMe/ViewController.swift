@@ -13,42 +13,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     
     let memeTextDelegate = MemeTextFieldDelegate()
 
-    let memeTextAttributes:[String:Any] = [
-        NSStrokeColorAttributeName: UIColor.black,
-        NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: -3.0]
-    
     @IBOutlet var memeTopTextView: UITextField!
     @IBOutlet var memeBottomTextView: UITextField!
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet var memeView: UIView!
-
     
+    let memeTextAttributes:[String:Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName: -3.0]
+
     var memedImage: UIImage!
 
-    
     @IBAction func shareButtonPressed() {
         print ("share button pressed")
         memedImage = generateMemedImage()
         
         let controller = UIActivityViewController(activityItems: [memedImage, "My Meme"], applicationActivities: nil)
         
-        
         self.present(controller, animated: true, completion: nil)
-        
         controller.completionWithItemsHandler = {
             (activityType, completed, items, error) in
-            
             guard completed else { print("User cancelled."); return }
-            
             // save the meme
             self.save()
-            
             print("Completed With Activity Type: \(activityType)")
-            
         }
     }
     
@@ -63,10 +55,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         memeTopTextView.delegate = memeTextDelegate
         
         setShareButton()
-        self.imagePickerView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleRightMargin, .flexibleBottomMargin]
-        self.memeView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleRightMargin, .flexibleBottomMargin]
-
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,12 +67,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func generateMemedImage() -> UIImage {
-        print ("generate memed image")
         var memeView : UIView? = nil
         for subview in self.view.subviews {
             //print("subview: ", subview.tag)
             if (subview.tag == 10) {
-                print("meme frame", subview.frame.size)
                 memeView = subview
                 break
             }
@@ -93,17 +79,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             UIGraphicsBeginImageContext(meme.bounds.size)
             meme.layer.render(in: UIGraphicsGetCurrentContext()!)
             let img : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-
-            //view.drawHierarchy(in: meme.frame, afterScreenUpdates: true)
             UIGraphicsEndImageContext()
             return img
-        
     }
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return memedImage
     }
-    
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         print("pick an image from album")
@@ -112,7 +94,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
-
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         print("pick an image from camera")
@@ -120,7 +101,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         imageCamera.delegate = self
         imageCamera.sourceType = .camera
         setShareButton()
-        resizeImageView()
         present(imageCamera, animated: true, completion: nil)
     }
     
@@ -131,9 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             imagePickerView.image = image
         }
         setShareButton()
-        resizeImageView()
         dismiss(animated: true, completion: nil)
-
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -177,23 +155,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-    }
-    func resizeImageView() {
-        var widthRatio = imagePickerView.bounds.size.width / (imagePickerView.image?.size.width)!
-        var heightRatio = imagePickerView.bounds.size.height / (imagePickerView.image?.size.height)!
-        var scale =  widthRatio < heightRatio ? widthRatio : heightRatio
-        var imageWidth = scale * (imagePickerView.image?.size.width)!
-        var imageHeight = scale * (imagePickerView.image?.size.height)!
-        
-        memeView.frame = CGRect(x:0, y:0, width:imageWidth, height:imageHeight);
-        memeView.center = (memeView.superview?.center)!;
-        // imagePickerView.frame = CGRect(x:0, y:0, width:imageWidth, height:imageHeight);
-        // imagePickerView.center = (imagePickerView.superview?.center)!;
-        view.layoutIfNeeded()
-        /// memeTopTextView.layoutIfNeeded()
-        // memeBottomTextView.layoutIfNeeded()
-        
-    
     }
 
 }
