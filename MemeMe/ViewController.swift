@@ -129,6 +129,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     func save() {
         // Create the meme
         let meme = Meme(topText: memeTopTextView.text!, bottomText: memeBottomTextView.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        
     }
     func keyboardWillShow(_ notification:Notification) {
         if (memeBottomTextView.isFirstResponder) {
