@@ -10,6 +10,8 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
+    var memes = [Meme]()
+
     @IBAction func createMemeButton(_ sender: Any) {
         print("Add Meme Button pressed")
     }
@@ -17,29 +19,24 @@ class MemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appDelegate.memes
     }
-
-    // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return memes.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
 
-        // Configure the cell...
+        let meme = self.memes[(indexPath as NSIndexPath).row]
+        
+        cell.textLabel?.text = meme.topText
+        cell.imageView?.image = meme.memedImage
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
