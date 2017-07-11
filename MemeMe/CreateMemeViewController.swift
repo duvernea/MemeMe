@@ -45,6 +45,8 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     @IBAction func cancelButtonPressed() {
         print("cancel button pressed")
+        // let _ = navigationController?.popViewController(animated: true)
+        navigationController?.dismiss(animated: true, completion: nil);
     }
     
     override func viewDidLoad() {
