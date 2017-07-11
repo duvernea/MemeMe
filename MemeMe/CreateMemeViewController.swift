@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
     
     let memeTextDelegate = MemeTextFieldDelegate()
