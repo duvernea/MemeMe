@@ -8,12 +8,9 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-var memes = [Meme]()
-
-
 class MemeCollectionViewController: UICollectionViewController {
+    
+    var memes = [Meme]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,13 +44,17 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        let meme = self.memes[(indexPath as NSIndexPath).row]
+        
+        // Configure the cell - TEMP
+        cell.topTextView.text = "testTop"
+        cell.bottomTextView.text = "testBot"
+        cell.memeImageView?.image = nil
+
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
 
     /*
