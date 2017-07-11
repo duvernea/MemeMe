@@ -43,6 +43,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             print("Completed With Activity Type: \(activityType)")
         }
     }
+    @IBAction func cancelButtonPressed() {
+        print("cancel button pressed")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

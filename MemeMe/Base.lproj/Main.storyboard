@@ -90,6 +90,11 @@
                                 <action selector="shareButtonPressed" destination="BYZ-38-t0r" id="x7t-UO-c9J"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="fsD-Ed-s6R">
+                            <connections>
+                                <action selector="cancelButtonPressed" destination="BYZ-38-t0r" id="Bxa-kt-70R"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cameraButton" destination="Poc-rS-235" id="cyy-If-CaO"/>
@@ -102,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="995.625" y="54.929577464788736"/>
+            <point key="canvasLocation" x="3277" y="-1033"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qp2-XC-4Go">
@@ -211,7 +216,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="6jG-uc-dg1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cta-eD-sQ1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cta-eD-sQ1">
+                            <connections>
+                                <segue destination="Rlk-7R-rEz" kind="show" id="GI2-UQ-6Yu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="thQ-zh-3n3" id="9RS-cx-7Mu"/>
@@ -257,6 +266,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MiK-jK-4sA">
                             <connections>
                                 <action selector="createMemeButton:" destination="Ecv-Lf-MDc" id="Eko-zC-jak"/>
+                                <segue destination="Rlk-7R-rEz" kind="show" id="6zI-n5-aJ1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -300,7 +310,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYG-ef-XbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="55"/>
+            <point key="canvasLocation" x="2304" y="-1033"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6zI-n5-aJ1"/>
+    </inferredMetricsTieBreakers>
 </document>
