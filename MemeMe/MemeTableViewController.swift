@@ -18,10 +18,10 @@ class MemeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
-        
         print("# of memes sent: ", memes.count)
     }
 

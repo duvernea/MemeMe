@@ -140,6 +140,9 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
         
+        print("meme appended")
+        print("memes count: ", appDelegate.memes.count);
+        
     }
     func keyboardWillShow(_ notification:Notification) {
         if (memeBottomTextView.isFirstResponder) {
