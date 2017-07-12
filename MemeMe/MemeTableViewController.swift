@@ -21,6 +21,8 @@ class MemeTableViewController: UITableViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
+        
+        print("# of memes sent: ", memes.count)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
