@@ -223,7 +223,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="flowLayout" destination="thQ-zh-3n3" id="9RS-cx-7Mu"/>
+                        <outlet property="flowLayout" destination="thQ-zh-3n3" id="z9P-n6-YP5"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ek-4D-uau" userLabel="First Responder" sceneMemberID="firstResponder"/>

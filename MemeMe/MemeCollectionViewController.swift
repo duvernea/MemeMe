@@ -28,8 +28,8 @@ class MemeCollectionViewController: UICollectionViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
         print("# of memes sent: ", memes.count)
+        self.collectionView?.reloadData()
     }
-
 
     /*
     // MARK: - Navigation
@@ -46,18 +46,20 @@ class MemeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        print("numberOfItemsInSection", memes.count)
         return memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("collectionView: cellForItemAt")
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         // Configure the cell - TEMP
-        cell.topTextView.text = "testTop"
-        cell.bottomTextView.text = "testBot"
-        cell.memeImageView?.image = nil
+        cell.topTextView.text = meme.topText
+        cell.bottomTextView.text = meme.bottomText
+        cell.memeImageView?.image = meme.memedImage
 
         return cell
     }

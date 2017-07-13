@@ -23,14 +23,17 @@ class MemeTableViewController: UITableViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
         print("# of memes sent: ", memes.count)
+        self.tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("number of Rows In Section tableView: ", memes.count)
         return memes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell", for: indexPath)
+        print("cellForRowAt tableView")
 
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
