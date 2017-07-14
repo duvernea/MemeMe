@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -234,27 +235,60 @@
         <scene sceneID="XUA-ll-s22">
             <objects>
                 <tableViewController id="Ecv-Lf-MDc" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PZv-1e-T66">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" sectionHeaderHeight="28" sectionFooterHeight="28" id="PZv-1e-T66">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableCell" textLabel="wCm-q7-3g4" style="IBUITableViewCellStyleDefault" id="jzp-T2-cSc">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomMemeTableCell" rowHeight="100" id="1dt-JS-KCD" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jzp-T2-cSc" id="eNa-81-smT">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1dt-JS-KCD" id="gK8-Ci-0Hb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wCm-q7-3g4">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3fo-fh-wBP">
+                                            <rect key="frame" x="116" y="8" width="256" height="84"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="top text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Aii-kC-u1M">
+                                                    <rect key="frame" x="8" y="0.0" width="240" height="42"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="bottom text" translatesAutoresizingMaskIntoConstraints="NO" id="uAL-m4-OgM">
+                                                    <rect key="frame" x="8" y="42" width="240" height="42"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uAL-m4-OgM" firstAttribute="leading" secondItem="3fo-fh-wBP" secondAttribute="leading" constant="8" id="OaD-qb-KNj"/>
+                                                <constraint firstItem="Aii-kC-u1M" firstAttribute="leading" secondItem="3fo-fh-wBP" secondAttribute="leading" constant="8" id="bS0-bK-ohT"/>
+                                                <constraint firstAttribute="height" constant="84" id="tNy-8l-xGO"/>
+                                            </constraints>
+                                        </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QdF-pt-j0t">
+                                            <rect key="frame" x="16" y="7" width="84" height="84"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="84" id="JtK-Pf-qDV"/>
+                                                <constraint firstAttribute="width" constant="84" id="lMY-ul-uuw"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QdF-pt-j0t" firstAttribute="leading" secondItem="gK8-Ci-0Hb" secondAttribute="leadingMargin" constant="8" id="R1g-Qg-JB0"/>
+                                        <constraint firstItem="3fo-fh-wBP" firstAttribute="leading" secondItem="QdF-pt-j0t" secondAttribute="trailing" constant="16" id="kab-A3-4oi"/>
+                                        <constraint firstItem="3fo-fh-wBP" firstAttribute="centerY" secondItem="gK8-Ci-0Hb" secondAttribute="centerY" id="ovE-DS-vZu"/>
+                                        <constraint firstItem="QdF-pt-j0t" firstAttribute="centerY" secondItem="gK8-Ci-0Hb" secondAttribute="centerY" id="pbH-12-8Kp"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bottomTextView" destination="uAL-m4-OgM" id="nXO-Hp-H3N"/>
+                                    <outlet property="memeImageView" destination="QdF-pt-j0t" id="8Zx-6u-Sc8"/>
+                                    <outlet property="topTextView" destination="Aii-kC-u1M" id="KCn-B3-9kz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -273,7 +307,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cd-tB-HwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="-670"/>
+            <point key="canvasLocation" x="992.75362318840587" y="-670.10869565217399"/>
         </scene>
         <!--Table-->
         <scene sceneID="QQE-kd-kNG">
@@ -314,6 +348,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GI2-UQ-6Yu"/>
+        <segue reference="6zI-n5-aJ1"/>
     </inferredMetricsTieBreakers>
 </document>
